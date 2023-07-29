@@ -16,8 +16,11 @@ final class RMService {
     private init() {}
     
     
-   // Send Rick and Morty API Call
-    public func execute(_ request: RMRequest, completion: @escaping () -> Void) {
-        
+    // Send Rick and Morty API Call
+    public func execute<T: Codable>(
+        _ request: RMRequest,
+        expencting type: T.Type,
+        completion: @escaping (Result<T, Error>) -> Void
+    ){
     }
 }
