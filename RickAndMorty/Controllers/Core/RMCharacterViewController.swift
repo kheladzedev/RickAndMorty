@@ -9,26 +9,27 @@ import UIKit
 
 // Контроллер для отображения и поиска персонажа
 final class RMCharacterViewController: UIViewController {
-
+    
+    
+    private let characterListView = RMCharacterListView()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         view.backgroundColor = .systemBackground
-        title = "Characters"
+        title = "Characters" 
+        setUpView()
         
-        let request = RMRequest(
-        endpoint: .character,
-        queryParameters: [
-        URLQueryItem(name: "name", value: "rick"),
-        URLQueryItem(name: "status", value: "alive")
-        ]
-
-        )
-        print(request.url)
-        
-        RMService.shared.execute(request, expencting: RMCharacter.self) { result in
+                
+            }
+    private func setUpView() {
+        view.addSubview(characterListView)
+        NSLayoutConstraint.activate([
+            characterListView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            characterListView.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor),
+            characterListView.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor),
+            characterListView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
             
-        }
+            ])
     }
-
-}
+        }
+                                 
